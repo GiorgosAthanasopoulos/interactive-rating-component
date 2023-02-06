@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/favicon-32x32.png"
+        />
+
+        <title>Frontend Mentor | Interactive rating component</title>
+
+        <!-- Feel free to remove these styles or customize in your own stylesheet 👍 -->
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap");
+
+            .attribution {
+                font-size: 11px;
+                text-align: center;
+                margin-top: 20px;
+            }
+            .attribution a {
+                color: hsl(228, 45%, 44%);
+            }
+
+            h1,
+            p,
+            button {
+                font-family: "Overpass", sans-serif;
+            }
+
+            body {
+                background-color: hsl(228, 11%, 9%);
+            }
+
+            div.result {
+                background-color: hsl(215, 21%, 16%);
+                display: none;
+            }
+
+            div.rating {
+                background-color: hsl(215, 21%, 16%);
+                color: white;
+            }
+
+            div.rating,
+            div.result {
+                width: 400px;
+                border-radius: 25px;
+                padding: 25px;
+            }
+
+            img#star {
+                content: url("./images/icon-star.svg");
+                background-color: hsl(215, 18%, 19%);
+                padding: 10px;
+                border-radius: 20px;
+            }
+
+            p.description,
+            div.ratings {
+                color: hsl(217, 12%, 63%);
+            }
+
+            button.submit {
+                margin-top: 20px;
+                width: 400px;
+                background-color: hsl(25, 97%, 53%);
+                color: white;
+                border: none;
+                border-radius: 25px;
+                padding: 10px 5px;
+                font-weight: 700;
+            }
+
+            button.submit:hover {
+                background-color: white;
+                color: hsl(25, 97%, 53%);
+                cursor: pointer;
+            }
+
+            div.ratings {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 25px;
+            }
+
+            div.ratings button {
+                background-color: hsl(210, 19%, 18%);
+                color: hsl(217, 12%, 63%);
+                border: none;
+                border-radius: 25px;
+                font-size: 15px;
+                padding: 20px 20px;
+            }
+
+            div.ratings button:hover {
+                color: white;
+                background-color: hsl(25, 97%, 53%);
+                cursor: pointer;
+            }
+
+            button.selected {
+                background-color: lightgrey;
+            }
+
+            button#rating-result {
+                color: orange;
+                background-color: #262f38;
+                border: none;
+                border-radius: 25px;
+                padding: 10px;
+            }
+
+            div.result {
+                text-align: center;
+            }
+
+            div.result h1 {
+                color: white;
+            }
+
+            div.result p {
+                color: grey;
+            }
+
+            img#thank-you {
+                content: url("./images/illustration-thank-you.svg");
+            }
+        </style>
+    </head>
+    <body>
+        <div class="rating" id="rating">
+            <img id="star" />
+            <h1>How did we do?</h1>
+            <p class="description">
+                Please let us know how we did with your support request. All
+                feedback is appreciated to help us improve our offering!
+            </p>
+            <div class="ratings">
+                <button onclick="button1Clicked()">1</button>
+                <button onclick="button2Clicked()">2</button>
+                <button onclick="button3Clicked()">3</button>
+                <button onclick="button4Clicked()">4</button>
+                <button onclick="button5Clicked()">5</button>
+            </div>
+            <button class="submit" onclick="submitButtonClicked()">
+                SUBMIT
+            </button>
+        </div>
+
+        <div class="result" id="result">
+            <img id="thank-you" />
+            <br />
+            <br />
+            <button id="rating-result">You selected out of 5</button>
+            <h1>Thank you!</h1>
+            <p>
+                We appreciate you taking the time to give a rating. If you ever
+                need more support, don’t hesitate to get in touch!
+            </p>
+        </div>
+
+        <div class="attribution">
+            Challenge by
+            <a
+                href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank"
+                >Frontend Mentor</a
+            >. Coded by
+            <a href="https://www.github.com/giorgosathanasopoulos"
+                >Giorgos Athanasopoulos</a
+            >.
+        </div>
+
+        <script type="text/javascript">
+            let selected = 0;
+            const ratingDiv = document.getElementById("rating");
+            const resultDiv = document.getElementById("result");
+            const resultButton = document.getElementById("rating-result");
+
+            const submitButtonClicked = () => {
+                if (selected == 0) {
+                    alert("Please select a rating!");
+                    return;
+                }
+                ratingDiv.style.display = "none";
+                resultDiv.style.display = "block";
+                resultButton.innerHTML =
+                    "You selected " + selected + " out of 5";
+            };
+
+            const button1Clicked = () => {
+                selected = 1;
+            };
+            const button2Clicked = () => {
+                selected = 2;
+            };
+            const button3Clicked = () => {
+                selected = 3;
+            };
+            const button4Clicked = () => {
+                selected = 4;
+            };
+            const button5Clicked = () => {
+                selected = 5;
+            };
+        </script>
+    </body>
+</html>
